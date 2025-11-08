@@ -1,220 +1,89 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sandhra Mary — Sketchbook Portfolio</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --paper-bg: #f8f6f1;
-      --ink: #1f1f1f;
-      --border: 2px solid #111;
-    }
-    body {
-      margin: 0;
-      background: var(--paper-bg);
-      font-family: "Montserrat", sans-serif;
-      color: var(--ink);
-    }
-    .hand { font-family: "Patrick Hand", cursive; }
-    .wrap { max-width: 960px; margin: 30px auto; padding: 20px; background: #fff; box-shadow: 4px 4px 0 rgba(0,0,0,0.1); }
-    header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed #999; padding-bottom: 10px; }
-    nav button { background: none; border: none; cursor: pointer; font-family: inherit; font-size: 16px; margin-left: 10px; }
-    nav button:hover { text-decoration: underline; }
-    .section-title { font-family: "Patrick Hand"; font-size: 22px; margin: 10px 0; border-bottom: 3px solid rgba(0,0,0,0.1); display:inline-block; }
-    .showreel { border: var(--border); height: 250px; display:flex; align-items:center; justify-content:center; background:#fafafa; margin:20px 0; cursor:pointer; }
-    .play-btn { border: var(--border); border-radius:8px; padding:20px 26px; font-size:32px; background:white; }
-    .works-row { display:flex; flex-wrap:wrap; gap:20px; }
-    .sketch-card { width:200px; height:150px; border:var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; background:white; box-shadow:4px 4px 0 rgba(0,0,0,0.05); cursor:pointer; transition:transform 0.2s ease; }
-    .sketch-card:hover { transform:translateY(-4px); }
-    .sketch-card img { width:100%; height:100px; object-fit:cover; border-bottom:1px solid #ccc; }
-    .sketch-card span { margin-top:6px; font-family:"Patrick Hand"; font-size:18px; }
-    .about { display:flex; align-items:center; background:#fafafa; border:var(--border); padding:20px; margin:20px 0; box-shadow:3px 3px 0 rgba(0,0,0,0.05); gap:20px; }
-    .about img { width:150px; height:150px; object-fit:cover; border-radius:50%; border:var(--border); }
-    .about p { line-height:1.6; font-size:15px; }
-    .contact-form input, .contact-form textarea { width:100%; border:2px solid #222; margin-bottom:8px; padding:8px; background:transparent; font-family:inherit; }
-    .btn { border:2px solid #222; background:none; padding:6px 12px; cursor:pointer; }
-    .btn:hover { background:#f1f1f1; }
-    .contact { background:#fff; border:var(--border); padding:20px; margin-top:30px; }
-
-    /* Popups */
-    .popup { position:fixed; inset:0; background:rgba(0,0,0,0.8); display:flex; align-items:center; justify-content:center; z-index:100; visibility:hidden; opacity:0; transition:opacity .3s ease; }
-    .popup.active { visibility:visible; opacity:1; }
-    .popup-inner { background:white; padding:20px; max-width:90%; max-height:90%; overflow:auto; position:relative; border:4px solid #222; }
-    .popup-close { position:absolute; top:10px; right:10px; border:none; background:#222; color:white; padding:4px 10px; cursor:pointer; border-radius:4px; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px; }
-    .thumb { border:var(--border); height:160px; background:#fdfdfd center/cover no-repeat; cursor:pointer; }
-
-    /* Lightbox */
-    .lightbox { position:fixed; inset:0; background:rgba(0,0,0,0.8); display:flex; align-items:center; justify-content:center; z-index:200; visibility:hidden; opacity:0; transition:opacity .3s ease; }
-    .lightbox.active { visibility:visible; opacity:1; }
-    .lightbox img { max-width:90%; max-height:80%; border:4px solid white; box-shadow:0 0 20px rgba(0,0,0,0.6); }
-    .lightbox .controls { position:absolute; top:20px; right:30px; display:flex; gap:10px; }
-    .lightbox button { background:white; border:none; font-size:18px; padding:6px 10px; cursor:pointer; border-radius:4px; }
-    .lightbox .nav { position:absolute; top:50%; transform:translateY(-50%); font-size:40px; color:white; cursor:pointer; user-select:none; padding:20px; }
-    .lightbox .prev { left:20px; }
-    .lightbox .next { right:20px; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sandhra Mary | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <h1 class="hand" style="font-size:26px;">Sandhra Mary</h1>
-      <nav>
-        <button id="nav-home">Home</button>
-        <button id="nav-contact">Contact</button>
-      </nav>
-    </header>
+  <!-- ================= NAVIGATION ================= -->
+  <header>
+    <nav class="navbar">
+      <h1 class="logo hand">Sandhra Mary</h1>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="films.html">Films</a></li>
+        <li><a href="comics.html">Comics</a></li>
+        <li><a href="photography.html">Photography</a></li>
+        <li><a href="character.html">Character Design</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-      <h2 class="section-title">Showreel</h2>
-      <div class="showreel" id="reel">
-        <div class="play-btn">▶</div>
-      </div>
+  <!-- ================= HERO / REEL ================= -->
+  <section class="hero">
+    <div class="reel-container">
+      <video id="reel-video" src="reel/reel.mp4" autoplay muted loop playsinline></video>
+    </div>
 
-      <h2 class="section-title">Works</h2>
-      <div class="works-row">
-        <div class="sketch-card" data-gallery="films">
-          <img src="film.jpeg" alt="Films">
-          <span>Films</span>
-        </div>
-        <div class="sketch-card" data-gallery="comics">
-          <img src="comic.jpeg" alt="Comics">
-          <span>Comics & Illustrations</span>
-        </div>
-        <div class="sketch-card" data-gallery="photography">
-          <img src="photo.jpeg" alt="Photography">
-          <span>Photography</span>
-        </div>
-      </div>
+  </section>
 
-      <h2 class="section-title">About Me</h2>
-      <div class="about hand">
-        <img src="about/me.jpeg" alt="Sandhra Mary">
-        <div>
-          <p>
-            Hi, I'm <strong>Sandhra Mary</strong> — a storyteller, filmmaker, and illustrator who brings ideas to life through film, art, and photography.
-          </p>
-          <p>
-            My creative world is a blend of motion and imagination — where stories unfold through moving images and ink lines. Welcome to my sketchbook of visuals!
-          </p>
-        </div>
-      </div>
-
-      <h2 class="section-title">Contact</h2>
-      <div class="contact">
-        <form class="contact-form" style="max-width:400px;">
-          <input placeholder="Name" required />
-          <input placeholder="Email" required type="email" />
-          <textarea placeholder="Message" rows="5"></textarea>
-          <button class="btn" type="submit">Send</button>
-        </form>
-      </div>
-    </main>
-  </div>
-
-  <!-- Gallery Popups -->
-  <div class="popup" id="gallery-popup">
-    <div class="popup-inner">
-      <button class="popup-close">✕</button>
-      <div id="popup-grid" class="grid"></div>
+  <!-- ================= WORKS ================= -->
+<section class="works-section">
+  <h2 class="hero-text hand">• Works •</h2>
+  <div class="index-gallery">
+    <div class="work-item">
+      <a href="films.html"><img src="film.jpg" alt="Films" class="thumb"></a>
+      <h3 class="hero-text hand">Films</h3>
+    </div>
+    <div class="work-item">
+      <a href="comics.html"><img src="comic.jpg" alt="Comics" class="thumb"></a>
+      <h3 class="hero-text hand">Comics</h3>
+    </div>
+    <div class="work-item">
+      <a href="photography.html"><img src="photo.jpg" alt="Photography" class="thumb"></a>
+      <h3 class="hero-text hand">Photography</h3>
+    </div>
+    <div class="work-item">
+      <a href="character.html"><img src="character.jpg" alt="Character Design" class="thumb"></a>
+      <h3 class="hero-text hand">Character Design</h3>
     </div>
   </div>
+</section>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <span class="nav prev">❮</span>
-    <img src="" alt="preview" id="lightbox-img">
-    <span class="nav next">❯</span>
-    <div class="controls">
-      <button id="close">Close ✕</button>
+  <!-- ================= ABOUT ================= -->
+  <section class="about-section">
+    <div class="about-wrapper">
+      <img src="user.jpg" alt="Sandhra Mary" class="about-img" />
+      <div class="about-text">
+        <h2 class="hand">About Me</h2>
+        <p>
+          I’m Sandhra Mary, a visual storyteller exploring creativity across
+          film, comics, photography, and character design. My sketchbook is a
+          living space for imagination — every frame, every line, and every shot
+          tells part of the story I love sharing.
+        </p>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Video Player Popup -->
-  <div class="popup" id="video-box">
-    <div class="popup-inner" style="background:none; border:none;">
-      <video id="reel-video" controls style="max-width:90%; max-height:80%; border:4px solid white;">
-        <source src="reel/video.mp4" type="video/mp4">
-      </video>
-      <button class="popup-close" id="close-video">✕</button>
+  <!-- ================= CONTACT ================= -->
+  <section class="contact-section" id="contact">
+    <h2 class="hand">Contact</h2>
+    <p>Let’s collaborate or just say hello!</p>
+    <div class="contact-links">
+      <a href="mailto:sandhra.mary@email.com" class="contact-btn">Email</a>
+      <a href="https://www.instagram.com" target="_blank" class="contact-btn">Instagram</a>
+      <a href="https://www.behance.net" target="_blank" class="contact-btn">Behance</a>
     </div>
-  </div>
+  </section>
 
-  <script>
-    // Showreel popup
-    const reel = document.getElementById('reel');
-    const videoBox = document.getElementById('video-box');
-    const video = document.getElementById('reel-video');
-    const closeVideo = document.getElementById('close-video');
-    reel.onclick = () => { videoBox.classList.add('active'); video.play(); };
-    closeVideo.onclick = () => { video.pause(); videoBox.classList.remove('active'); };
-    videoBox.onclick = e => { if(e.target === videoBox){ video.pause(); videoBox.classList.remove('active'); } };
-
-    // Gallery Popup
-    const popup = document.getElementById('gallery-popup');
-    const popupGrid = document.getElementById('popup-grid');
-    const popupClose = document.querySelector('.popup-close');
-
-    const galleryData = {
-      films: { folder: 'film', prefix: 'film', count: 6 },
-      comics: { folder: 'comics', prefix: 'comic', count: 9 },
-      photography: { folder: 'photography', prefix: 'photo', count: 9 }
-    };
-
-    document.querySelectorAll('[data-gallery]').forEach(card => {
-      card.onclick = () => {
-        const g = galleryData[card.dataset.gallery];
-        popupGrid.innerHTML = '';
-        for(let i=1; i<=g.count; i++){
-          const imgDiv = document.createElement('div');
-          imgDiv.className = 'thumb';
-          imgDiv.style.backgroundImage = `url('${g.folder}/${g.prefix}${i}.jpeg')`;
-          imgDiv.dataset.src = `${g.folder}/${g.prefix}${i}.jpeg`;
-          popupGrid.appendChild(imgDiv);
-        }
-        popup.classList.add('active');
-      };
-    });
-
-    popupClose.onclick = () => popup.classList.remove('active');
-    popup.onclick = e => { if(e.target === popup) popup.classList.remove('active'); };
-
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lightImg = document.getElementById('lightbox-img');
-    const nextBtn = document.querySelector('.next');
-    const prevBtn = document.querySelector('.prev');
-    const closeBtn = document.getElementById('close');
-    let currentIndex = 0;
-    let currentGroup = [];
-
-    popupGrid.addEventListener('click', e => {
-      if(e.target.classList.contains('thumb')){
-        currentGroup = Array.from(popupGrid.querySelectorAll('.thumb')).map(t => t.dataset.src);
-        currentIndex = currentGroup.indexOf(e.target.dataset.src);
-        openLightbox(currentGroup[currentIndex]);
-      }
-    });
-
-    function openLightbox(src){ lightImg.src = src; lightbox.classList.add('active'); }
-    function closeLightbox(){ lightbox.classList.remove('active'); lightImg.src = ''; }
-    function showNext(){ currentIndex = (currentIndex + 1) % currentGroup.length; lightImg.src = currentGroup[currentIndex]; }
-    function showPrev(){ currentIndex = (currentIndex - 1 + currentGroup.length) % currentGroup.length; lightImg.src = currentGroup[currentIndex]; }
-
-    closeBtn.onclick = closeLightbox;
-    nextBtn.onclick = showNext;
-    prevBtn.onclick = showPrev;
-    lightbox.onclick = e => { if(e.target === lightbox) closeLightbox(); };
-    document.addEventListener('keydown', e => {
-      if(!lightbox.classList.contains('active')) return;
-      if(e.key === 'Escape') closeLightbox();
-      if(e.key === 'ArrowRight') showNext();
-      if(e.key === 'ArrowLeft') showPrev();
-    });
-  </script>
+  <!-- ================= FOOTER ================= -->
+  <footer class="hand">
+    <p>© 2025 Sandhra Mary — All Rights Reserved</p>
+  </footer>
 </body>
 </html>

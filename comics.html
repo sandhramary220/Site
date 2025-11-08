@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comics & Illustrations - Sandhra Mary</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Masonry layout */
+    .masonry {
+      column-count: 3;
+      column-gap: 1rem;
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .masonry img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      break-inside: avoid;
+      cursor: pointer;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .masonry img:hover {
+      transform: scale(1.03);
+      opacity: 0.9;
+    }
+
+    @media (max-width: 1000px) {
+      .masonry { column-count: 2; }
+    }
+
+    @media (max-width: 600px) {
+      .masonry { column-count: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="hero-text hand">Sandhra Mary</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="films.html">Films</a></li>
+        <li><a href="comics.html" class="active">Comics</a></li>
+        <li><a href="photography.html">Photography</a></li>
+        <li><a href="character.html">Character</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="works-section">
+    <h2 class="hero-text hand">COMICS</h2>
+    <div class="index-gallery">
+      <a href="https://heyzine.com/flip-book/0b60bfe6b5.html" target="_blank"><img src="comics/comic1.jpg" alt="Comic 1"></a>
+      <a href="https://heyzine.com/flip-book/e2d86cbede.html" target="_blank"><img src="comics/comic2.jpg" alt="Comic 2"></a>
+      <a href="scroll.html" target="_blank"><img src="comics/comic3.jpg" alt="Comic 3"></a>
+    </div>
+  </section>
+
+  <section class="works-section">
+    <h2 class="hero-text hand">ILLUSTRATIONS</h2>
+    <div class="masonry lightbox-gallery">
+      <img src="illustrations/1.jpg" alt="">
+      <img src="illustrations/2.jpg" alt="">
+      <img src="illustrations/3.jpg" alt="">
+      <img src="illustrations/4.jpg" alt="">
+      <img src="illustrations/5.jpg" alt="">
+      <img src="illustrations/6.jpg" alt="">
+      <img src="illustrations/7.jpg" alt="">
+      <img src="illustrations/8.jpg" alt="">
+      <img src="illustrations/9.jpg" alt="">
+      <img src="illustrations/10.jpg" alt="">
+      <img src="illustrations/11.jpg" alt="">
+      <img src="illustrations/12.jpg" alt="">
+      <img src="illustrations/13.jpg" alt="">
+      <img src="illustrations/14.jpg" alt="">
+      <img src="illustrations/15.jpg" alt="">
+      <img src="illustrations/16.jpg" alt="">
+      <img src="illustrations/17.jpg" alt="">
+      <img src="illustrations/18.jpg" alt="">
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <button class="close" id="closeBtn">&times;</button>
+      <button class="prev" id="prevBtn">&#10094;</button>
+      <img id="lightboxImg" src="" alt="">
+      <button class="next" id="nextBtn">&#10095;</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Sandhra Mary</p>
+  </footer>
+
+  <script>
+  const galleries = document.querySelectorAll('.lightbox-gallery img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const closeBtn = document.getElementById('closeBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let currentIndex = 0;
+
+  galleries.forEach((img, i) => {
+    img.addEventListener('click', () => {
+      currentIndex = i;
+      showImage();
+      lightbox.classList.add('active');
+    });
+  });
+
+  function showImage() {
+    lightboxImg.src = galleries[currentIndex].src;
+  }
+
+  closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + galleries.length) % galleries.length;
+    showImage();
+  });
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % galleries.length;
+    showImage();
+  });
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) lightbox.classList.remove('active');
+  });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') lightbox.classList.remove('active');
+    if (e.key === 'ArrowLeft') prevBtn.click();
+    if (e.key === 'ArrowRight') nextBtn.click();
+  });
+  </script>
+</body>
+</html>

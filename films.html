@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Films - Sandhra Mary</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ---- FILM GALLERY STYLES ---- */
+    .films-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 40px;
+      justify-items: center;
+    }
+
+    .film-item {
+      width: 100%;
+      max-width: 320px;
+      cursor: pointer;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .film-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+    }
+
+    .film-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-bottom: 2px solid #f0f0f0;
+      display: block;
+    }
+
+    .film-desc {
+      padding: 15px;
+      font-size: 1rem;
+      color: #444;
+      background: #fff;
+      transition: color 0.3s ease;
+    }
+
+    .film-item:hover .film-desc {
+      color: #000;
+    }
+
+    /* Lightbox (optional) */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.9);
+    }
+
+    .lightbox img {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .lightbox:target {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo hand">Sandhra Mary</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="films.html" class="active">Films</a></li>
+        <li><a href="comics.html">Comics</a></li>
+        <li><a href="photography.html">Photography</a></li>
+        <li><a href="character.html">Character Design</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="works-section">
+    <h2 class="hand">FILMS</h2>
+	<h2 class="hand">-----	</h2>
+	<br>
+	<br>
+
+    <div class="films-gallery">
+      <div class="film-item" onclick="window.open('https://www.behance.net/gallery/210802033/Poye-Pattu-Animated-Short-Film', '_blank')">
+        <img src="film/1.jpg" alt="Film 1" />
+        <p class="film-desc">Poye Pattu (Have to Go): 2D animated film.</p>
+      </div>
+
+      <div class="film-item" onclick="window.open('https://youtu.be/x9x0yQgcoiw', '_blank')">
+        <img src="film/2.jpg" alt="Film 2" />
+        <p class="film-desc">Kanmanilla (Missing): 2D animation film.</p>
+      </div>
+
+      <div class="film-item" onclick="window.open('https://youtu.be/cR16gzuBXN8', '_blank')">
+        <img src="film/3.jpg" alt="Film 3" />
+        <p class="film-desc">Parchaay(Reflections): Oil on Glass Experimental Animation.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Sandhra Mary. All rights reserved.</p>
+  </footer>
+</body>
+</html>

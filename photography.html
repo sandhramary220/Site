@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photography - Sandhra Mary</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Masonry layout using CSS columns */
+    .masonry {
+      column-count: 3;
+      column-gap: 1rem;
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .masonry img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      display: block;
+      break-inside: avoid;
+      cursor: pointer;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .masonry img:hover {
+      transform: scale(1.03);
+      opacity: 0.9;
+    }
+
+    @media (max-width: 1000px) {
+      .masonry { column-count: 2; }
+    }
+
+    @media (max-width: 600px) {
+      .masonry { column-count: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="hero-text hand">Sandhra Mary</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="films.html">Films</a></li>
+        <li><a href="comics.html">Comics</a></li>
+        <li><a href="photography.html" class="active">Photography</a></li>
+        <li><a href="character.html">Character</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="works-section">
+    <h2 class="hero-text hand">PHOTOGRAPHY</h2>
+
+    <div class="masonry lightbox-gallery">
+      <img src="photography/1.jpg" alt="Photo 1">
+      <img src="photography/2.jpg" alt="Photo 2">
+      <img src="photography/3.jpg" alt="Photo 3">
+      <img src="photography/4.jpg" alt="Photo 4">
+      <img src="photography/5.jpg" alt="Photo 5">
+      <img src="photography/6.jpg" alt="Photo 6">
+      <img src="photography/7.jpg" alt="Photo 7">
+      <img src="photography/8.jpg" alt="Photo 8">
+      <img src="photography/9.jpg" alt="Photo 9">
+      <img src="photography/10.jpg" alt="Photo 10">
+      <img src="photography/11.jpg" alt="Photo 11">
+      <img src="photography/12.jpg" alt="Photo 12">
+      <img src="photography/13.jpg" alt="Photo 13">
+      <img src="photography/14.jpg" alt="Photo 14">
+      <img src="photography/15.jpg" alt="Photo 15">
+      <img src="photography/16.jpg" alt="Photo 16">
+      <img src="photography/17.jpg" alt="Photo 17">
+      <img src="photography/18.jpg" alt="Photo 18">
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <button class="close" id="closeBtn">&times;</button>
+      <button class="prev" id="prevBtn">&#10094;</button>
+      <img id="lightboxImg" src="" alt="">
+      <button class="next" id="nextBtn">&#10095;</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Sandhra Mary</p>
+  </footer>
+
+  <script>
+    const images = document.querySelectorAll('.lightbox-gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('closeBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let current = 0;
+
+    images.forEach((img, i) => {
+      img.addEventListener('click', () => {
+        current = i;
+        showImage();
+        lightbox.classList.add('active');
+      });
+    });
+
+    function showImage() { lightboxImg.src = images[current].src; }
+
+    closeBtn.onclick = () => lightbox.classList.remove('active');
+    prevBtn.onclick = () => { current = (current - 1 + images.length) % images.length; showImage(); };
+    nextBtn.onclick = () => { current = (current + 1) % images.length; showImage(); };
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.classList.remove('active'); });
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+      if (e.key === 'ArrowLeft') prevBtn.click();
+      if (e.key === 'ArrowRight') nextBtn.click();
+    });
+  </script>
+</body>
+</html>
