@@ -1,93 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scrolling Image - Sandhra Mary</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Scrolling Artwork - Sandhra Mary</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Aboreto&display=swap');
+
+    html,body { height:100%; margin:0; }
     body {
       margin: 0;
-      overflow: hidden;
       background: #f7f6f3;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      font-family: 'Aboreto', cursive;
+      overflow: hidden;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
-    .scroll-container {
+    .scroll-wrap {
       position: relative;
-      width: 100%;
+      width: 100vw;
       height: 100vh;
       overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: block;
     }
 
-    .scroll-track {
-      display: flex;
-      width: max-content;
-      animation: scrollLeft 60s linear infinite;
+    /* The scrolling container (horizontal scrollbar allowed) */
+    .scroll-container {
+      position: absolute;
+      inset: 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      display: block;
     }
 
-    .scroll-track img {
+    /* keep scrollbar hidden visually but functional on desktops */
+    .scroll-container::-webkit-scrollbar { height: 8px; }
+    .scroll-container::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 4px; }
+    .scroll-container::-webkit-scrollbar-track { background: transparent; }
+
+    /* the very wide image */
+    .scroll-image {
       height: 100vh;
       width: auto;
-      flex-shrink: 0;
+      display: block;
       user-select: none;
-      pointer-events: none;
+      -webkit-user-drag: none;
+      pointer-events: auto;
     }
 
-    @keyframes scrollLeft {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+    /* Buttons (left / right) */
+    .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 40;
+      background: rgba(255,255,255,0.92);
+      border: none;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      font-size: 26px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #222;
+      transition: transform .12s ease, background .12s ease;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    /* Mirror second image for seamless loop */
-    .scroll-track img.clone {
-      transform: translateX(0);
-    }
+    .scroll-btn:hover { transform: translateY(-50%) scale(1.04); background: rgba(255,255,255,1); }
+    .scroll-left { left: 18px; }
+    .scroll-right { right: 18px; }
 
-    /* Optional fade effect on edges */
+    /* edge fades */
     .fade-left, .fade-right {
       position: absolute;
       top: 0;
-      width: 100px;
-      height: 100%;
-      z-index: 10;
+      bottom: 0;
+      width: 90px;
+      z-index: 30;
       pointer-events: none;
     }
-
-    .fade-left {
-      left: 0;
-      background: linear-gradient(to right, #f7f6f3 50%, transparent);
-    }
-
-    .fade-right {
-      right: 0;
-      background: linear-gradient(to left, #f7f6f3 50%, transparent);
-    }
+    .fade-left { left: 0; background: linear-gradient(to right, #f7f6f3 40%, transparent); }
+    .fade-right { right: 0; background: linear-gradient(to left, #f7f6f3 40%, transparent); }
 
     @media (max-width: 768px) {
-      .scroll-track {
-        animation-duration: 40s;
-      }
-      .fade-left, .fade-right {
-        width: 60px;
-      }
+      .scroll-btn { width:48px; height:48px; font-size:20px; }
+      .fade-left, .fade-right { width:56px; }
     }
   </style>
 </head>
 <body>
-  <div class="scroll-container">
-    <div class="scroll-track">
-      <img src="scroll.png" alt="Scrolling Artwork">
-      <img src="scroll.png" alt="Scrolling Artwork" class="clone">
+  <div class="scroll-wrap">
+    <div id="scrollContainer" class="scroll-container" tabindex="0" aria-label="Scrollable artwork">
+      <img id="scrollImage" class="scroll-image" src="scroll.png" alt="Long horizontal artwork">
     </div>
+
+    <button id="btnLeft" class="scroll-btn scroll-left" title="Scroll left" aria-label="Scroll left">‹</button>
+    <button id="btnRight" class="scroll-btn scroll-right" title="Scroll right" aria-label="Scroll right">›</button>
+
     <div class="fade-left"></div>
     <div class="fade-right"></div>
   </div>
+
+  <script>
+    (function () {
+      const container = document.getElementById('scrollContainer');
+      const img = document.getElementById('scrollImage');
+      const btnLeft = document.getElementById('btnLeft');
+      const btnRight = document.getElementById('btnRight');
+
+      let rafId = null;
+      let autoScrolling = false;
+      let lastTime = null;
+
+      // speed in pixels per second (smaller = slower)
+      const SPEED_PX_PER_SEC = 20; // reduced speed for gentler motion
+
+      // amount manual buttons scroll (px)
+      const MANUAL_STEP = 400;
+
+      function startAutoScroll() {
+        // ensure there's room to scroll
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        if (maxScroll <= 2) return; // nothing to scroll
+
+        stopAutoScroll(); // guard
+        autoScrolling = true;
+        lastTime = null;
+
+        function step(timestamp) {
+          if (!autoScrolling) return;
+          if (!lastTime) lastTime = timestamp;
+          const dt = (timestamp - lastTime) / 1000; // seconds
+          lastTime = timestamp;
+          const delta = SPEED_PX_PER_SEC * dt;
+          // move right
+          container.scrollLeft = Math.min(container.scrollLeft + delta, maxScroll);
+          // stop if reached end
+          if (container.scrollLeft >= maxScroll - 0.5) {
+            stopAutoScroll();
+            return;
+          }
+          rafId = requestAnimationFrame(step);
+        }
+        rafId = requestAnimationFrame(step);
+      }
+
+      function stopAutoScroll() {
+        autoScrolling = false;
+        lastTime = null;
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+      }
+
+      // Manual controls cancel auto-scroll and scroll by step
+      function manualScrollLeft() {
+        stopAutoScroll();
+        container.scrollBy({ left: -MANUAL_STEP, behavior: 'smooth' });
+      }
+      function manualScrollRight() {
+        stopAutoScroll();
+        container.scrollBy({ left: MANUAL_STEP, behavior: 'smooth' });
+      }
+
+      // Button listeners
+      btnLeft.addEventListener('click', (e) => { e.stopPropagation(); manualScrollLeft(); });
+      btnRight.addEventListener('click', (e) => { e.stopPropagation(); manualScrollRight(); });
+
+      // Stop auto-scroll on user interaction (pointerdown/touch/wheel/keydown)
+      container.addEventListener('pointerdown', stopAutoScroll, { passive: true });
+      container.addEventListener('touchstart', stopAutoScroll, { passive: true });
+      container.addEventListener('wheel', stopAutoScroll, { passive: true });
+      window.addEventListener('keydown', (e) => {
+        if (['ArrowLeft','ArrowRight','Space','PageUp','PageDown'].includes(e.code)) stopAutoScroll();
+      });
+
+      // Start auto-scroll after image loads and layout stable
+      function tryStartAuto() {
+        // small timeout ensures layout computed
+        setTimeout(startAutoScroll, 400);
+      }
+
+      if (img.complete) {
+        // image already loaded
+        tryStartAuto();
+      } else {
+        img.addEventListener('load', tryStartAuto, { once: true });
+        img.addEventListener('error', () => {
+          // nothing to do if image fails; keep buttons functional
+          console.warn('scroll-image: image failed to load.');
+        }, { once: true });
+      }
+
+      // If window resized, if autoScrolling is active restart it so maxScroll recalculates
+      window.addEventListener('resize', () => {
+        if (autoScrolling) {
+          stopAutoScroll();
+          tryStartAuto();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
