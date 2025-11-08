@@ -36,6 +36,35 @@
     @media (max-width: 600px) {
       .masonry { column-count: 1; }
     }
+	
+	.index-gallery2 {
+  display: grid;
+  gap: 1.0rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin-top: 30px;
+}
+
+.index-gallery2 {
+  display: grid;
+  gap: 1.0rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin-top: 30px;
+}
+
+.index-gallery2 img {
+  width: 50%;
+  aspect-ratio: 1 / 1; /* ensures square images */
+  object-fit: cover; /* fills area without distortion */
+  border-radius: 18px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.index-gallery2 img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
   </style>
 </head>
 <body>
@@ -54,7 +83,7 @@
 
   <section class="works-section">
     <h2 class="hero-text hand">COMICS</h2>
-    <div class="index-gallery">
+    <div class="index-gallery2">
       <a href="https://heyzine.com/flip-book/0b60bfe6b5.html" target="_blank"><img src="comics/comic1.jpg" alt="Comic 1"></a>
       <a href="https://heyzine.com/flip-book/e2d86cbede.html" target="_blank"><img src="comics/comic2.jpg" alt="Comic 2"></a>
       <a href="scroll.html" target="_blank"><img src="comics/comic3.jpg" alt="Comic 3"></a>
