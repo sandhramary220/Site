@@ -1,9 +1,14 @@
 /* ==============================
    GLOBAL STYLES
 ============================== */
+/* ==============================
+   GLOBAL STYLES
+============================== */
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&display=swap');
+
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Aboreto', cursive;
   background: linear-gradient(180deg, #faf8f5 0%, #f3f1ec 100%);
   color: #222;
   overflow-x: hidden;
@@ -11,6 +16,9 @@ body {
 
 /* Fonts */
 .hand {
+  font-family: 'Aboreto', cursive;
+}
+.hand2 {
   font-family: 'Patrick Hand', cursive;
 }
 
