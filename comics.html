@@ -93,19 +93,20 @@
   <section class="works-section">
   <h2 class="hero-text hand">ILLUSTRATIONS</h2>
 
-    <!-- ⭐ AUTOPLAY VIDEO ADDED HERE ⭐ -->
-    <video 
-      width="90%" 
-      autoplay 
-      muted 
-      loop 
-      playsinline 
-      style="display:block; margin: 20px auto; border-radius: 12px;">
-      <source src="illustrations/vid1.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-
   <div class="masonry lightbox-gallery">
+
+    <!-- ⭐ VIDEO AS A MASONRY ITEM -->
+    <div class="masonry-item" style="width: 100%; display: flex; justify-content: center;">
+      <video 
+        src="illustrations/vid1.mp4" 
+        autoplay 
+        muted 
+        playsinline 
+        loop 
+        style="width: 100%; max-width: 500px; border-radius: 12px;">
+      </video>
+    </div>
+
     <img src="illustrations/1.jpg" alt="">
     <img src="illustrations/2.jpg" alt="">
     <img src="illustrations/3.jpg" alt="">
@@ -124,8 +125,10 @@
     <img src="illustrations/16.jpg" alt="">
     <img src="illustrations/17.jpg" alt="">
     <img src="illustrations/18.jpg" alt="">
+
   </div>
 </section>
+
 
 
   <!-- Lightbox -->
