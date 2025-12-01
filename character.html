@@ -119,48 +119,34 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') prevBtn.click();
 });
 
-// Function to open lightbox for a specific gallery
-function openLightbox(galleryNum) {
-  const gallery = document.querySelector(`#gallery${galleryNum} .char-gallery`);
-  const images = gallery.querySelectorAll('img');
-  let index = 0;
+// Lightbox logic for both galleries
+let currentGalleryImages = [];
+let currentIndex = 0;
 
-  images.forEach((img, i) => {
-    img.addEventListener('click', () => {
-      index = i;
-      lightbox.classList.add('active');
-      lightboxImg.src = img.src;
-    });
+// Attach click events to all gallery images
+document.querySelectorAll(".char-gallery img").forEach((img) => {
+  img.addEventListener("click", (e) => {
+    const gallery = e.target.closest(".char-gallery");
+    currentGalleryImages = Array.from(gallery.querySelectorAll("img"));
+    currentIndex = currentGalleryImages.indexOf(e.target);
+
+    lightboxImg.src = e.target.src;
+    lightbox.classList.add("active");
   });
+});
 
-  nextBtn.onclick = () => {
-    index = (index + 1) % images.length;
-    lightboxImg.src = images[index].src;
-  };
+// Next button
+nextBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % currentGalleryImages.length;
+  lightboxImg.src = currentGalleryImages[currentIndex].src;
+});
 
-  prevBtn.onclick = () => {
-    index = (index - 1 + images.length) % images.length;
-    lightboxImg.src = images[index].src;
-  };
-}
+// Prev button
+prevBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
+  lightboxImg.src = currentGalleryImages[currentIndex].src;
+});
 
-// Gallery toggle
-function toggleGallery(num) {
-  const g1 = document.getElementById('gallery1');
-  const g2 = document.getElementById('gallery2');
-
-  if (num === 1) {
-    g1.classList.toggle('hidden');
-    g2.classList.add('hidden');
-    g1.scrollIntoView({ behavior: "smooth" });
-    openLightbox(1); // initialize lightbox for gallery 1
-  } else {
-    g2.classList.toggle('hidden');
-    g1.classList.add('hidden');
-    g2.scrollIntoView({ behavior: "smooth" });
-    openLightbox(2); // initialize lightbox for gallery 2
-  }
-}
 </script>
 
 </body>
