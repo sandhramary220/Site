@@ -858,7 +858,7 @@ footer {
   justify-content: center;
   gap: 40px;
   margin-top: 40px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .char-box {
