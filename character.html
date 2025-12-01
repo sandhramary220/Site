@@ -63,6 +63,15 @@
 <!-- LIGHTBOX -->
 <!-- LIGHTBOX -->
 
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <span class="prev">&#10094;</span>
+  <div class="lightbox-content">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <span class="next">&#10095;</span>
+</div>
 
 <footer class="hand">
   <p>© 2025 Sandhra Mary — All Rights Reserved</p>
@@ -87,7 +96,7 @@ function toggleGallery(num) {
 }
 
 
-// Lightbox Functions
+// Grab all images in galleries
 const images = document.querySelectorAll('.char-gallery img');
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
@@ -97,18 +106,19 @@ const prevBtn = document.querySelector('.prev');
 
 let index = 0;
 
-function openLightbox(i) {
-  index = i;
-  lightbox.style.display = "flex";
-  lightboxImg.src = images[i].src;
-}
-
+// Open lightbox on image click
 images.forEach((img, i) => {
-  img.addEventListener('click', () => openLightbox(i));
+  img.addEventListener('click', () => {
+    index = i;
+    lightbox.classList.add('active');
+    lightboxImg.src = img.src;
+  });
 });
 
-closeBtn.addEventListener('click', () => lightbox.style.display = "none");
+// Close lightbox
+closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
 
+// Next / Previous buttons
 nextBtn.addEventListener('click', () => {
   index = (index + 1) % images.length;
   lightboxImg.src = images[index].src;
@@ -117,6 +127,19 @@ nextBtn.addEventListener('click', () => {
 prevBtn.addEventListener('click', () => {
   index = (index - 1 + images.length) % images.length;
   lightboxImg.src = images[index].src;
+});
+
+// Close lightbox if clicked outside image
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) lightbox.classList.remove('active');
+});
+
+// Optional: Close with Escape / navigate with arrows
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'Escape') lightbox.classList.remove('active');
+  if (e.key === 'ArrowRight') nextBtn.click();
+  if (e.key === 'ArrowLeft') prevBtn.click();
 });
 </script>
 
