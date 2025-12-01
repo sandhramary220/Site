@@ -86,11 +86,15 @@ function toggleGallery(num) {
 
   if (num === 1) {
     g1.classList.toggle('hidden');
-    g2.classList.add('hidden');
+g2.classList.add('hidden');
+attachLightboxEvents();
+
     g1.scrollIntoView({ behavior: "smooth" });
   } else {
     g2.classList.toggle('hidden');
-    g1.classList.add('hidden');
+g1.classList.add('hidden');
+attachLightboxEvents();
+
     g2.scrollIntoView({ behavior: "smooth" });
   }
 }
@@ -119,21 +123,24 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') prevBtn.click();
 });
 
-// Lightbox logic for both galleries
+// Lightbox logic
 let currentGalleryImages = [];
 let currentIndex = 0;
 
-// Attach click events to all gallery images
-document.querySelectorAll(".char-gallery img").forEach((img) => {
-  img.addEventListener("click", (e) => {
-    const gallery = e.target.closest(".char-gallery");
-    currentGalleryImages = Array.from(gallery.querySelectorAll("img"));
-    currentIndex = currentGalleryImages.indexOf(e.target);
+// Attach click events WHEN a gallery is opened
+function attachLightboxEvents() {
+  document.querySelectorAll(".char-gallery img").forEach((img) => {
+    img.onclick = (e) => {
+      const gallery = e.target.closest(".char-gallery");
+      currentGalleryImages = Array.from(gallery.querySelectorAll("img"));
+      currentIndex = currentGalleryImages.indexOf(e.target);
 
-    lightboxImg.src = e.target.src;
-    lightbox.classList.add("active");
+      lightboxImg.src = e.target.src;
+      lightbox.classList.add("active");
+    };
   });
-});
+}
+
 
 // Next button
 nextBtn.addEventListener("click", () => {
