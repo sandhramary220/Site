@@ -822,7 +822,7 @@ footer {
 }
 
 .char-preview {
-  width: 320px;
+  width: 600px;
   border-radius: 16px;
   box-shadow: 0 4px 15px rgba(0,0,0,.12);
 }
