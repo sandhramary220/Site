@@ -97,37 +97,14 @@ function toggleGallery(num) {
 
 
 // Grab all images in galleries
-const images = document.querySelectorAll('.char-gallery img');
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 const closeBtn = document.querySelector('.close');
 const nextBtn = document.querySelector('.next');
 const prevBtn = document.querySelector('.prev');
 
-let index = 0;
-
-// Open lightbox on image click
-images.forEach((img, i) => {
-  img.addEventListener('click', () => {
-    index = i;
-    lightbox.classList.add('active');
-    lightboxImg.src = img.src;
-  });
-});
-
 // Close lightbox
 closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
-
-// Next / Previous buttons
-nextBtn.addEventListener('click', () => {
-  index = (index + 1) % images.length;
-  lightboxImg.src = images[index].src;
-});
-
-prevBtn.addEventListener('click', () => {
-  index = (index - 1 + images.length) % images.length;
-  lightboxImg.src = images[index].src;
-});
 
 // Close lightbox if clicked outside image
 lightbox.addEventListener('click', (e) => {
@@ -141,6 +118,49 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') nextBtn.click();
   if (e.key === 'ArrowLeft') prevBtn.click();
 });
+
+// Function to open lightbox for a specific gallery
+function openLightbox(galleryNum) {
+  const gallery = document.querySelector(`#gallery${galleryNum} .char-gallery`);
+  const images = gallery.querySelectorAll('img');
+  let index = 0;
+
+  images.forEach((img, i) => {
+    img.addEventListener('click', () => {
+      index = i;
+      lightbox.classList.add('active');
+      lightboxImg.src = img.src;
+    });
+  });
+
+  nextBtn.onclick = () => {
+    index = (index + 1) % images.length;
+    lightboxImg.src = images[index].src;
+  };
+
+  prevBtn.onclick = () => {
+    index = (index - 1 + images.length) % images.length;
+    lightboxImg.src = images[index].src;
+  };
+}
+
+// Gallery toggle
+function toggleGallery(num) {
+  const g1 = document.getElementById('gallery1');
+  const g2 = document.getElementById('gallery2');
+
+  if (num === 1) {
+    g1.classList.toggle('hidden');
+    g2.classList.add('hidden');
+    g1.scrollIntoView({ behavior: "smooth" });
+    openLightbox(1); // initialize lightbox for gallery 1
+  } else {
+    g2.classList.toggle('hidden');
+    g1.classList.add('hidden');
+    g2.scrollIntoView({ behavior: "smooth" });
+    openLightbox(2); // initialize lightbox for gallery 2
+  }
+}
 </script>
 
 </body>
