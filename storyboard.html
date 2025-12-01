@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Storyboard | Sandhya Mary</title>
+<link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="top-nav">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="comics.html">Comics</a>
+    <a href="photography.html">Photography</a>
+    <a href="character.html">Character</a>
+    <a class="active" href="#">Storyboard</a>
+  </nav>
+</header>
+
+<section class="works-section">
+  <h2 class="hand">STORYBOARD</h2>
+
+  <div class="masonry-gallery lightbox-gallery">
+    <img src="storyboard/1.jpg" alt="Storyboard 1">
+    <img src="storyboard/2.jpg" alt="Storyboard 2">
+    <img src="storyboard/3.jpg" alt="Storyboard 3">
+    <img src="storyboard/4.jpg" alt="Storyboard 4">
+    <img src="storyboard/5.jpg" alt="Storyboard 5">
+    <img src="storyboard/6.jpg" alt="Storyboard 6">
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img">
+  <a class="prev">&#10094;</a>
+  <a class="next">&#10095;</a>
+</div>
+
+<footer class="hand">
+  <p>© 2025 Sandhra Mary — All Rights Reserved</p>
+</footer>
+
+<script>
+const images = document.querySelectorAll('.lightbox-gallery img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeBtn = document.querySelector('.close');
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
+
+let imgIndex = 0;
+
+function openLightbox(index) {
+  imgIndex = index;
+  lightbox.style.display = "flex";
+  lightboxImg.src = images[index].src;
+}
+
+
+closeBtn.addEventListener('click', () => lightbox.style.display = "none");
+nextBtn.addEventListener('click', () => {
+  imgIndex = (imgIndex + 1) % images.length;
+  lightboxImg.src = images[imgIndex].src;
+});
+prevBtn.addEventListener('click', () => {
+  imgIndex = (imgIndex - 1 + images.length) % images.length;
+  lightboxImg.src = images[imgIndex].src;
+});
+</script>
+
+</body>
+</html>

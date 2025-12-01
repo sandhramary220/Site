@@ -1,60 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sandhra Mary | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sandhya Mary</title>
+<link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <!-- ================= NAVIGATION ================= -->
-  <header>
-    <nav class="navbar">
-      <h1 class="logo hand">Sandhra Mary</h1>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="films.html">Films</a></li>
-        <li><a href="comics.html">Comics</a></li>
-        <li><a href="photography.html">Photography</a></li>
-        <li><a href="character.html">Character Design</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <!-- ================= HERO / REEL ================= -->
-  <section class="hero">
-    <div class="reel-container">
-      <video id="reel-video" src="reel/reel.mp4" autoplay muted loop playsinline></video>
-    </div>
+<!-- TOP NAV -->
+<header class="top-nav">
+  <nav>
+    <a href="#">Home</a>
+	<a href="comics.html" class="active">Comics</a>
+    <a href="photography.html">Photography</a>
+    <a href="character.html">Character</a>
+	<a href="storyboard.html">Storyboard</a>
+  </nav>
+</header>
 
-  </section>
+<!-- TOP ART + TITLE -->
+<div class="top-container">
+    <img src="Film pencil.gif" alt="pencil art" class="top-pencil">
+</div>
 
-  <!-- ================= WORKS ================= -->
-<section class="works-section">
-  <h2 class="hero-text hand">• Works •</h2>
-  <div class="index-gallery">
-    <div class="work-item">
-      <a href="films.html"><img src="film.jpg" alt="Films" class="thumb"></a>
-      <h3 class="hero-text hand">Films</h3>
-    </div>
-    <div class="work-item">
-      <a href="comics.html"><img src="comic.jpg" alt="Comics" class="thumb"></a>
-      <h3 class="hero-text hand">Comics</h3>
-    </div>
-    <div class="work-item">
-      <a href="photography.html"><img src="photo.jpg" alt="Photography" class="thumb"></a>
-      <h3 class="hero-text hand">Photography</h3>
-    </div>
-    <div class="work-item">
-      <a href="character.html"><img src="character.jpg" alt="Character Design" class="thumb"></a>
-      <h3 class="hero-text hand">Character Design</h3>
-    </div>
+<!-- SHOWREEL BOX -->
+<section class="showreel-section">
+  <div class="showreel-container">
+    <video class="showreel-video" autoplay loop muted playsinline>
+      <source src="reel/reel.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </div>
 </section>
 
-  <!-- ================= ABOUT ================= -->
+<!-- PROJECTS SECTION -->
+<section class="projects-sec">
+  <h2 class="hand section-head">PROJECTS</h2>
+
+  <!-- PROJECT 1 -->
+  <div class="project-row left">
+    <img src="1.jpg" class="project-img">
+    <div class="project-text">
+      <h3 class="hand">KANMANILLA (MISSING)</h3>
+      <p>An old woman goes missing one morning, giving rise to rumors, only to be found later having a me-time.</p>
+      <a href="https://www.behance.net/gallery/238232559/KANMANILLA(MISSING)-2D-Animated-Short" class="contact-btn">SEE MORE</a>
+    </div>
+  </div>
+
+  <!-- PROJECT 2 -->
+  <div class="project-row right">
+    <img src="2.jpg" class="project-img">
+    <div class="project-text">
+      <h3 class="hand">POYE PATTU (HAVE TO GO)</h3>
+      <p>A weary saleswoman hallucinates about her worst fear, as she can't hold her urgent need to pee.</p>
+      <a href="https://www.behance.net/gallery/210802033/Poye-Pattu-Animated-Short-Film" class="contact-btn">SEE MORE</a>
+    </div>
+  </div>
+
+  <!-- PROJECT 3 -->
+  <div class="project-row left">
+    <img src="3.jpg" class="project-img">
+    <div class="project-text">
+      <h3 class="hand">THE PRIZE</h3>
+      <p>A perfectionist mother obsessively prepares her son for a fancy dress competition.</p>
+      <a href="https://www.behance.net/gallery/239517469/THE-PRIZE-ANIMATED-SHORT(WIP)" class="contact-btn">SEE MORE</a>
+    </div>
+  </div>
+  
+    <!-- PROJECT 4 -->
+  <div class="project-row right">
+    <img src="4.jpg" class="project-img">
+    <div class="project-text">
+      <h3 class="hand">PARCHAAY (Reflections)</h3>
+      <p>A man's fear of mirros unfolds though oil-on-glass animation, where reflections start to feel strange.</p>
+      <a href="https://youtu.be/cR16gzuBXN8" class="contact-btn">SEE MORE</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- SERVICE BOARDS -->
+<section class="boards-section">
+
+  <a class="board" href="character.html">
+    <img src="character.jpg" alt="Character Design" class="service-card">
+    <!--h2 class="hand board-title">CHARACTER DESIGN</h2-->
+  </a>
+
+  <a class="board" href="comics.html">
+    <img src="comics.jpg" alt="Comics & Illustrations" class="service-card">
+    <!--h2 class="hand board-title">COMICS & ILLUSTRATIONS</h2-->
+  </a>
+
+  <a class="board" href="photography.html">
+    <img src="photo.jpg" alt="Photography" class="service-card">
+    <!--h2 class="hand board-title">PHOTOGRAPHY</h2-->
+  </a>
+
+  <a class="board" href="storyboard.html">
+    <img src="storyboard.jpg" alt="Storyboarding" class="service-card">
+    <!--h2 class="hand board-title">STORYBOARDING</h2-->
+  </a>
+
+</section>
+
+ <!-- ================= ABOUT ================= -->
   <section class="about-section">
     <div class="about-wrapper">
       <img src="user.jpg" alt="Sandhra Mary" class="about-img" />
@@ -86,5 +139,8 @@
   <footer class="hand">
     <p>© 2025 Sandhra Mary — All Rights Reserved</p>
   </footer>
+</body>
+</html>
+
 </body>
 </html>

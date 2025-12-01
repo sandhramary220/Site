@@ -1,73 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Character Design - Sandhra Mary</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Character Design | Sandhra Mary</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo hand">Sandhra Mary</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="films.html">Films</a></li>
-        <li><a href="comics.html">Comics</a></li>
-        <li><a href="photography.html">Photography</a></li>
-        <li><a href="character.html" class="active">Character</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section class="works-section">
-    <h2 class="hand">CHARACTER DESIGN</h2>
-    <div class="index-gallery lightbox-gallery">
-      <img src="images/character1.jpg" alt="">
-      <img src="images/character2.jpg" alt="">
-      <img src="images/character3.jpg" alt="">
-      <img src="images/character4.jpg" alt="">
-      <img src="images/character5.jpg" alt="">
-      <img src="images/character6.jpg" alt="">
+<header class="top-nav">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="films.html">Films</a>
+    <a href="comics.html">Comics</a>
+    <a href="photography.html">Photography</a>
+    <a class="active" href="character.html">Character</a>
+    <a href="storyboard.html">Storyboard</a>
+  </nav>
+</header>
+
+
+<section class="works-section">
+  <h2 class="hand">CHARACTER DESIGN</h2>
+
+  <div class="character-main">
+    <div class="char-box" onclick="toggleGallery(1)">
+      <img src="character/01.jpg" class="char-preview">
+      <h3 class="hand">Series 1</h3>
     </div>
-  </section>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <div class="lightbox-content">
-      <button class="close" id="closeBtn">&times;</button>
-      <button class="prev" id="prevBtn">&#10094;</button>
-      <img id="lightboxImg" src="" alt="">
-      <button class="next" id="nextBtn">&#10095;</button>
+    <div class="char-box" onclick="toggleGallery(2)">
+      <img src="character/02.jpg" class="char-preview">
+      <h3 class="hand">Series 2</h3>
     </div>
   </div>
 
-  <footer>
-    <p>© 2025 Sandhra Mary</p>
-  </footer>
+  <!-- Gallery 1 -->
+  <div id="gallery1" class="hidden gallery-container">
+    <div class="char-gallery">
+      <img src="character/IMG1/1.jpg" alt="">
+      <img src="character/IMG1/2.jpg" alt="">
+      <img src="character/IMG1/3.jpg" alt="">
+	  <img src="character/IMG1/4.jpg" alt="">
+      <img src="character/IMG1/5.jpg" alt="">
+      <img src="character/IMG1/6.jpg" alt="">
+    </div>
+  </div>
 
-  <script>
-  const imgs = document.querySelectorAll('.lightbox-gallery img');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
-  const closeBtn = document.getElementById('closeBtn');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  let index = 0;
+  <!-- Gallery 2 -->
+  <div id="gallery2" class="hidden gallery-container">
+    <div class="char-gallery">
+      <img src="character/IMG2/1.jpg" alt="">
+    </div>
+  </div>
 
-  imgs.forEach((img, i) => {
-    img.addEventListener('click', () => {
-      index = i;
-      showImage();
-      lightbox.classList.add('active');
-    });
-  });
+</section>
 
-  function showImage() { lightboxImg.src = imgs[index].src; }
-  closeBtn.onclick = () => lightbox.classList.remove('active');
-  prevBtn.onclick = () => { index = (index - 1 + imgs.length) % imgs.length; showImage(); };
-  nextBtn.onclick = () => { index = (index + 1) % imgs.length; showImage(); };
-  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.classList.remove('active'); });
-  </script>
+
+<!-- LIGHTBOX -->
+<!-- LIGHTBOX -->
+
+
+<footer class="hand">
+  <p>© 2025 Sandhra Mary — All Rights Reserved</p>
+</footer>
+
+
+<script>
+// Expand / Collapse Series Galleries
+function toggleGallery(num) {
+  const g1 = document.getElementById('gallery1');
+  const g2 = document.getElementById('gallery2');
+
+  if (num === 1) {
+    g1.classList.toggle('hidden');
+    g2.classList.add('hidden');
+    g1.scrollIntoView({ behavior: "smooth" });
+  } else {
+    g2.classList.toggle('hidden');
+    g1.classList.add('hidden');
+    g2.scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+
+// Lightbox Functions
+const images = document.querySelectorAll('.char-gallery img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeBtn = document.querySelector('.close');
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
+
+let index = 0;
+
+function openLightbox(i) {
+  index = i;
+  lightbox.style.display = "flex";
+  lightboxImg.src = images[i].src;
+}
+
+images.forEach((img, i) => {
+  img.addEventListener('click', () => openLightbox(i));
+});
+
+closeBtn.addEventListener('click', () => lightbox.style.display = "none");
+
+nextBtn.addEventListener('click', () => {
+  index = (index + 1) % images.length;
+  lightboxImg.src = images[index].src;
+});
+
+prevBtn.addEventListener('click', () => {
+  index = (index - 1 + images.length) % images.length;
+  lightboxImg.src = images[index].src;
+});
+</script>
+
 </body>
 </html>
