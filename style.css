@@ -1079,7 +1079,7 @@ body {
 }
 
 h2.section-head.works-title {
-  margin-top: 20px;   /* space above */
+  margin-top: -30px;   /* space above */
   margin-bottom: -60px; /* space below */
 }
 
