@@ -1084,5 +1084,9 @@ body {
   margin-bottom: 10px !important;
   display: block;
 }
+.section-head.works-title {
+  margin-top: 10px;   /* reduce space ABOVE */
+  margin-bottom: 10px;  /* reduce space BELOW */
+}
 
 
