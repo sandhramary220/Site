@@ -1078,15 +1078,9 @@ body {
   background-position: center;
 }
 
-/* WORKS title spacing fix */
-.works-title {
-  margin-top: 20px !important;
-  margin-bottom: 10px !important;
-  display: block;
-}
-.section-head.works-title {
-  margin-top: 10px;   /* reduce space ABOVE */
-  margin-bottom: 10px;  /* reduce space BELOW */
+h2.section-head.works-title {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
 }
 
 
