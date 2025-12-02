@@ -972,3 +972,98 @@ footer {
   #lightbox .prev { left: 10px; }
   #lightbox .next { right: 10px; }
 }
+
+/* ====== Fix lightbox buttons outside image ====== */
+#lightbox .close,
+#lightbox .prev,
+#lightbox .next {
+  position: absolute;
+  z-index: 1001;
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  background: rgba(0,0,0,0.5);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+#lightbox .close { top: 20px; right: 20px; }
+#lightbox .prev { top: 50%; left: 20px; transform: translateY(-50%); }
+#lightbox .next { top: 50%; right: 20px; transform: translateY(-50%); }
+
+#lightbox .close:hover,
+#lightbox .prev:hover,
+#lightbox .next:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  #lightbox .close,
+  #lightbox .prev,
+  #lightbox .next {
+    width: 40px;
+    height: 40px;
+    font-size: 1.8rem;
+  }
+  #lightbox .close { top: 10px; right: 10px; }
+  #lightbox .prev { left: 10px; }
+  #lightbox .next { right: 10px; }
+}
+
+/* ====== FORCE lightbox buttons to sit on the overlay edges (override) ====== */
+/* Targets only buttons that are direct children of #lightbox so it won't affect other markup */
+#lightbox > .close,
+#lightbox > .prev,
+#lightbox > .next {
+  position: absolute;         /* absolute relative to #lightbox (which is position:fixed) */
+  z-index: 11000;             /* above the image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-size: 1.6rem;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.18s ease, transform 0.12s ease;
+}
+
+/* hover */
+#lightbox > .close:hover,
+#lightbox > .prev:hover,
+#lightbox > .next:hover {
+  background: rgba(0,0,0,0.85);
+  transform: translateY(-1px);
+}
+
+/* positions relative to the overlay (not the image) */
+#lightbox > .close { top: 18px; right: 18px; }
+#lightbox > .prev  { left: 18px; top: 50%; transform: translateY(-50%); }
+#lightbox > .next  { right: 18px; top: 50%; transform: translateY(-50%); }
+
+/* mobile tweak */
+@media (max-width: 600px) {
+  #lightbox > .close,
+  #lightbox > .prev,
+  #lightbox > .next {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  #lightbox > .close { top: 12px; right: 12px; }
+  #lightbox > .prev  { left: 8px; }
+  #lightbox > .next  { right: 8px; }
+}
+
