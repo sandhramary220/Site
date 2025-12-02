@@ -356,7 +356,7 @@ body {
 
 /* Container padding */
 section {
-  padding: 20px 10%;   /* was 60px, reduce space below projects */
+  padding: 60px 10%;   /* was 60px, reduce space below projects */
   text-align: center;
 }
 
