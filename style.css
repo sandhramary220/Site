@@ -1089,5 +1089,10 @@ h2.section-head.works-title {
   margin-bottom: -60px; /* space below */
 }
 
+/* FIX storyboard page shifting right */
+.masonry-gallery {
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
 
 
