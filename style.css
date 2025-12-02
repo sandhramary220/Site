@@ -357,7 +357,7 @@ body {
   font-family: 'Outfit', cursive;
 }
 .hand2 {
-  font-family: 'Patrick Hand', cursive;
+  font-family: 'Outfit', cursive;
 }
 
 /* Container padding */
@@ -1111,5 +1111,5 @@ html, body {
   max-width: 100%;
   box-sizing: border-box;
 }
-
+hand2
 
