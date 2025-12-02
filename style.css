@@ -5,6 +5,9 @@
    GLOBAL STYLES
 ============================== */
 @import url('https://fonts.googleapis.com/css2?family=Aboreto&display=swap');
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+</style>
 
 /* ---- LIGHTBOX FIX ---- */
 .lightbox {
@@ -197,7 +200,7 @@
 }
 
 .tagline {
-  font-family: "Aboreto", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 1rem;
   letter-spacing: 4px;
   margin-top: 10px;
@@ -224,7 +227,7 @@
 
 body {
   margin: 0;
-  font-family: 'Aboreto', cursive;
+  font-family: 'Outfit', cursive;
   background: #f7f1e8;
   color: #222;
   text-align: center;
@@ -340,7 +343,7 @@ body {
 
 body {
   margin: 0;
-  font-family: 'Aboreto', cursive;
+  font-family: 'Outfit', cursive;
   background: linear-gradient(180deg, #faf8f5 0%, #f3f1ec 100%);
   color: #222;
   overflow-x: hidden;
@@ -348,7 +351,7 @@ body {
 
 /* Fonts */
 .hand {
-  font-family: 'Aboreto', cursive;
+  font-family: 'Outfit', cursive;
 }
 .hand2 {
   font-family: 'Patrick Hand', cursive;
