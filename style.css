@@ -66,8 +66,9 @@
 
 .showreel-video {
   width: 100%;
-  height: auto;
+  height: 70vh;       /* restrict video height to 70% of viewport */
   display: block;
+  object-fit: cover;  /* scale video to fill container without distortion */
   border-radius: 20px;
 }
 
