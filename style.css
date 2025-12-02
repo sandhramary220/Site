@@ -309,7 +309,7 @@ body {
 
 /* boards */
 .boards-section {
-  margin-top: 40px; /* was 40px, reduce space above boards */
+  margin-top: 40px; 
 }
 
 .board {
@@ -356,7 +356,7 @@ body {
 
 /* Container padding */
 section {
-  padding: 60px 10%;   /* was 60px, reduce space below projects */
+  padding: 60px 10%;   
   text-align: center;
 }
 
@@ -1079,8 +1079,9 @@ body {
 }
 
 h2.section-head.works-title {
-  margin-top: 0px !important;
-  margin-bottom: 0px !important;
+  margin-top: 40px;   /* space above */
+  margin-bottom: 30px; /* space below */
 }
+
 
 
