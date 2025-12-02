@@ -1095,4 +1095,11 @@ h2.section-head.works-title {
   padding: 0 !important;
 }
 
+/* FIX PAGE SHIFT / HORIZONTAL SCROLL */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden !important;
+}
+
 
