@@ -75,3 +75,24 @@ prevBtn.addEventListener('click', () => {
 
 </body>
 </html>
+
+/* STORYBOARD FIX – stop horizontal overflow */
+.masonry-gallery {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.masonry-gallery img {
+  width: 100%;        /* forces image to fit inside column */
+  height: auto;
+  display: block;
+}
+
+/* Prevent page shifting */
+body {
+  overflow-x: hidden;
+}
+
