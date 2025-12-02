@@ -309,7 +309,7 @@ body {
 
 /* boards */
 .boards-section {
-  margin-top: 20px; /* was 40px, reduce space above boards */
+  margin-top: 40px; /* was 40px, reduce space above boards */
 }
 
 .board {
