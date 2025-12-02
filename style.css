@@ -1089,27 +1089,4 @@ h2.section-head.works-title {
   margin-bottom: -60px; /* space below */
 }
 
-/* FIX storyboard page shifting right */
-.masonry-gallery {
-  margin: 0 auto !important;
-  padding: 0 !important;
-}
-
-/* FIX PAGE SHIFT / HORIZONTAL SCROLL */
-body, html {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden !important;
-}
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-* {
-  max-width: 100%;
-  box-sizing: border-box;
-}
-hand2
 
