@@ -51,7 +51,7 @@
 
 .showreel-section {
   text-align: center;
-  margin-top: 0px;
+  margin-top: -40px;
 }
 
 .showreel-container {
@@ -264,7 +264,7 @@ body {
 
 /* SHOWREEL */
 .showreel-box {
-  padding: 70px 0;
+  padding: 20px 0;
 }
 
 .reel-placeholder {
