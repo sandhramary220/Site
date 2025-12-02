@@ -205,7 +205,7 @@
 .pencil-gif {
   width: 50%;
   max-width: 900px;
-  margin-top: 20px;
+  margin-top: 10px;   /* changed this from 20px */
 }
 
 /* fade animation */
@@ -428,7 +428,7 @@ header {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 80px 10% 60px;
+  padding: 80px 10% 20px;      /* changed this from 60px to 20px */
 }
 
 .reel-container {
