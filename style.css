@@ -51,8 +51,10 @@
 
 .showreel-section {
   text-align: center;
-  margin-top: -50px;  /* REDUCED THIS */
+  margin-top: -50px;
+  margin-bottom: -40px;   /* <<< REDUCE GAP UNDER VIDEO */
 }
+
 
 .showreel-container {
   width: 800px;
