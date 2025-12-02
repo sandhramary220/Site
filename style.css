@@ -1070,3 +1070,11 @@ footer {
   #lightbox > .next  { right: 8px; }
 }
 
+body {
+  background-image: url("paper.jpg");  /* your texture file */
+  background-size: cover;               /* fill the viewport */
+  background-repeat: no-repeat;
+  background-attachment: fixed;         /* THIS makes it stay still */
+  background-position: center;
+}
+
