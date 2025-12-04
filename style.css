@@ -1098,16 +1098,24 @@ h2.section-head.works-title {
 
 @media (max-width: 768px) {
 
-  /* Fix showreel overflowing */
   .showreel-container {
-    width: 100% !important;
-    padding: 0 10px;
-  }
+  width: 100%;
+}
 
+.showreel-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+}
+
+/* phone fix */
+@media (max-width: 768px) {
   .showreel-video {
-    width: 100% !important;
-    height: auto !important;
+    border-radius: 12px;
   }
+}
+
 
   /* Fix character design panel */
   .project-row {
@@ -1145,3 +1153,56 @@ h2.section-head.works-title {
 }
 
 character design lan
+
+/* FORCE SIDE-BY-SIDE ELEMENTS TO STACK ON PHONE */
+@media (max-width: 600px) {
+  .project-row {
+    flex-direction: column !important;
+    width: 100%;
+    gap: 20px;
+  }
+
+  .project-img {
+    width: 100% !important;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+
+  .project-text {
+    text-align: center !important;
+    max-width: 90%;
+  }
+}
+.storyboard img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  margin: 0 auto;        /* centers image */
+}
+
+/* Phone fix */
+@media (max-width: 768px) {
+  .storyboard img {
+    width: 100%;         /* uses full phone width */
+  }
+}
+.hero-title {
+  font-size: clamp(28px, 6vw, 60px); /* scales beautifully */
+  text-align: center;
+}
+
+.hero-gif {
+  width: 100%;
+  max-width: 450px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* phone fix */
+@media (max-width: 768px) {
+  .hero-gif {
+    max-width: 90%;
+  }
+}
+
