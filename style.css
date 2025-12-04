@@ -1185,19 +1185,6 @@ character design lan
     max-width: 90%;
   }
 }
-.storyboard {
-  width: 100%;
-  max-width: 100%;
-  padding: 5px 2%;  /* reduce side padding on mobile */
-  margin: 0 auto;
-}
-
-
-/* Phone fix */
-@media (max-width: 768px) {
-  .storyboard img {
-    width: 100%;         /* uses full phone width */
-  }
 }
 .hero-title {
   font-size: clamp(28px, 6vw, 60px); /* scales beautifully */
@@ -1217,18 +1204,7 @@ character design lan
     max-width: 90%;
   }
 }
-.storyboard {
-  width: 100%;
-  max-width: 100%;
-  padding: 10px 5%; /* reduce padding for phones */
-  margin: 0 auto;
-}
 
-@media (max-width: 768px) {
-  .storyboard {
-    padding: 5px 2%;
-  }
-}
 /* ==============================
    CHARACTER DESIGN + STORYBOARD MOBILE FIX
 ============================== */
@@ -1244,16 +1220,7 @@ character design lan
     width: 100%;
   }
 
-  /* Storyboard images */
-  .storyboard img {
-    width: 100%;
-  }
-
-  /* Storyboard container */
-  .storyboard {
-    padding: 5px 2%; /* reduce side padding */
-  }
-}
+ 
 
 /* ==============================
    CHARACTER DESIGN + STORYBOARD RESPONSIVE FIX
@@ -1270,14 +1237,7 @@ character design lan
     width: 100%;
   }
 
-  .storyboard img {
-    width: 100%;
-  }
-
-  .storyboard {
-    padding: 5px 5%;
-  }
-}
+  
 
 /* PHONES (very small screens under 480px) */
 @media (max-width: 480px) {
@@ -1286,15 +1246,12 @@ character design lan
     max-width: 350px; /* scale properly for phones */
   }
 
-  .storyboard {
-    padding: 5px 2%;
-  }
-}
+  
 /* FINAL FIX — FORCE CHARACTER + STORYBOARD IMAGES TO BE RESPONSIVE */
 
 .char-preview,
 .char-gallery img,
-.storyboard img {
+ {
   width: 100% !important;
   height: auto !important;
   max-width: 100% !important;
@@ -1309,7 +1266,7 @@ character design lan
 
 /* Reduce outer padding on small screens */
 @media (max-width: 768px) {
-  .storyboard,
+ 
   .character-main,
   .char-gallery {
     padding: 0 !important;
@@ -1319,14 +1276,51 @@ character design lan
 /* MOBILE FIX — don't change desktop */
 @media (max-width: 768px) {
   .character-gallery img,
-  .storyboard-grid img {
+  {
     width: 100% !important;   /* Full width on phone */
     max-width: 100% !important;
     display: block;
   }
 
   .character-gallery,
-  .storyboard-grid {
+  {
     flex-direction: column;   /* Stack vertically */
+  }
+}
+
+/* ==============================
+   STORYBOARD CLEAN RESPONSIVE GRID
+============================== */
+.storyboard-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 2%;
+  box-sizing: border-box;
+}
+
+.storyboard-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.storyboard-gallery img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+  .storyboard-gallery {
+    grid-template-columns: 1fr; /* Stack images on phone */
+    gap: 12px;
+    padding: 5px 2%;
   }
 }
