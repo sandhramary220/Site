@@ -1255,3 +1255,38 @@ character design lan
   }
 }
 
+/* ==============================
+   CHARACTER DESIGN + STORYBOARD RESPONSIVE FIX
+============================== */
+
+/* TABLETS (bigger screens under 768px) */
+@media (max-width: 768px) {
+  .char-preview {
+    width: 100%;
+    max-width: 500px; /* NOT too small */
+  }
+
+  .char-gallery img {
+    width: 100%;
+  }
+
+  .storyboard img {
+    width: 100%;
+  }
+
+  .storyboard {
+    padding: 5px 5%;
+  }
+}
+
+/* PHONES (very small screens under 480px) */
+@media (max-width: 480px) {
+  .char-preview {
+    width: 100%;
+    max-width: 350px; /* scale properly for phones */
+  }
+
+  .storyboard {
+    padding: 5px 2%;
+  }
+}
