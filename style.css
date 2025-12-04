@@ -1316,3 +1316,17 @@ character design lan
     margin: 0 auto !important;
   }
 }
+/* MOBILE FIX — don't change desktop */
+@media (max-width: 768px) {
+  .character-gallery img,
+  .storyboard-grid img {
+    width: 100% !important;   /* Full width on phone */
+    max-width: 100% !important;
+    display: block;
+  }
+
+  .character-gallery,
+  .storyboard-grid {
+    flex-direction: column;   /* Stack vertically */
+  }
+}
