@@ -155,7 +155,33 @@ prevBtn.addEventListener("click", () => {
   lightboxImg.src = currentGalleryImages[currentIndex].src;
 });
 
+function loadImages(folder, containerId) {
+  const container = document.getElementById(containerId);
+  let i = 1;
+
+  function tryLoad() {
+    const img = new Image();
+    img.src = `${folder}/${i}.jpg`;
+
+    img.onload = () => {
+      container.appendChild(img);
+      i++;
+      tryLoad(); // load next image automatically
+    };
+
+    img.onerror = () => {
+      return; // stop when there are no more files
+    };
+  }
+
+  tryLoad();
+}
+
+// Load when page opens
+loadImages("character/IMG2", "gallery2-images");
+
 </script>
+
 
 </body>
 </html>
