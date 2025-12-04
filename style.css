@@ -71,11 +71,19 @@
 
 .showreel-video {
   width: 100%;
-  height: 65vh;       /* restrict video height to 65% of viewport */
-  display: block;
-  object-fit: cover;  /* scale video to fill container without distortion */
+  height: auto;
+  aspect-ratio: 16 / 9;   /* keeps perfect video proportion */
   border-radius: 20px;
+  display: block;
 }
+
+
+@media (max-width: 600px) {
+  .showreel-video {
+    max-height: 45vh;
+  }
+}
+
 
 /* INTERACTIVE HOVER FOR SERVICE BLOCKS */
 .service-card {
@@ -430,14 +438,6 @@ header {
 /* ==============================
    HERO SECTION
 ============================== */
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 80px 10% 20px;      /* changed this from 60px to 20px */
-}
 
 .reel-container {
   width: 100%;
@@ -478,10 +478,13 @@ header {
 
 .index-gallery {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   margin-top: 30px;
+  padding: 0 15px;
 }
+
+
 
 .index-gallery {
   display: grid;
@@ -1089,4 +1092,56 @@ h2.section-head.works-title {
   margin-bottom: -60px; /* space below */
 }
 
+/* ============================
+   GLOBAL MOBILE FIXES
+============================ */
 
+@media (max-width: 768px) {
+
+  /* Fix showreel overflowing */
+  .showreel-container {
+    width: 100% !important;
+    padding: 0 10px;
+  }
+
+  .showreel-video {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Fix character design panel */
+  .project-row {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 20px !important;
+    padding: 0 10px;
+  }
+
+  .project-img {
+    width: 100% !important;
+    max-width: 300px;
+  }
+
+  .project-text {
+    text-align: center !important;
+    max-width: 100% !important;
+  }
+
+  /* Fix hero image + pencil */
+  .pencil-gif {
+    width: 90% !important;
+    max-width: 400px !important;
+  }
+
+  .hero {
+    height: auto !important;
+    padding-top: 20px;
+  }
+
+  /* Fix any side overflow */
+  body {
+    overflow-x: hidden !important;
+  }
+}
+
+character design lan
