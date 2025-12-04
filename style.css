@@ -1215,4 +1215,16 @@ character design lan
     max-width: 90%;
   }
 }
+.storyboard {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px 5%; /* reduce padding for phones */
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .storyboard {
+    padding: 5px 2%;
+  }
+}
 
