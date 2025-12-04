@@ -1290,3 +1290,29 @@ character design lan
     padding: 5px 2%;
   }
 }
+/* FINAL FIX — FORCE CHARACTER + STORYBOARD IMAGES TO BE RESPONSIVE */
+
+.char-preview,
+.char-gallery img,
+.storyboard img {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+}
+
+/* Make the character container take full width */
+.character-main,
+.char-box {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Reduce outer padding on small screens */
+@media (max-width: 768px) {
+  .storyboard,
+  .character-main,
+  .char-gallery {
+    padding: 0 !important;
+    margin: 0 auto !important;
+  }
+}
