@@ -1,3 +1,5 @@
+
+
 /* ==============================
    GLOBAL STYLES
 ============================== */
@@ -7,6 +9,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Aboreto&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+.masonry-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.masonry-gallery img {
+  width: 100%;
+  max-width: 800px;  /* adjust as needed */
+  height: auto;
+  display: block;
+  cursor: pointer;
+}
+
+/* Lightbox styling */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.lightbox-content {
+  max-width: 95vw;
+  max-height: 95vh;  /* ensure full image visible without overflow */
+  margin: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Navigation buttons */
+.prev, .next, .close {
+  position: absolute;
+  color: white;
+  font-size: 40px;
+  padding: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.close { top: 20px; right: 30px; }
+.prev { left: 10px; top: 50%; transform: translateY(-50%); }
+.next { right: 10px; top: 50%; transform: translateY(-50%); }
+
 
 
 /* ---- LIGHTBOX FIX ---- */
@@ -345,12 +400,6 @@ body {
   }
 }
 
-.board img {
-  width: 100%;
-  height: auto;
-  border-radius: 16px;
-  display: block;
-}
 
 .board-title {
   margin-top: 10px;
@@ -496,7 +545,6 @@ header {
   margin-top: 30px;
   padding: 0 15px;
 }
-
 
 
 .index-gallery {
@@ -1214,39 +1262,6 @@ character design lan
     max-width: 90%;
   }
 }
-
-/* ==============================
-   CHARACTER DESIGN + STORYBOARD MOBILE FIX
-============================== */
-@media (max-width: 768px) {
-  /* Character preview image */
-  .char-preview {
-    width: 100%;
-    max-width: 90%; /* scales down on phones */
-  }
-
-  /* Character gallery images */
-  .char-gallery img {
-    width: 100%;
-  }
-
- 
-
-/* ==============================
-   CHARACTER DESIGN + STORYBOARD RESPONSIVE FIX
-============================== */
-
-/* TABLETS (bigger screens under 768px) */
-@media (max-width: 768px) {
-  .char-preview {
-    width: 100%;
-    max-width: 500px; /* NOT too small */
-  }
-
-  .char-gallery img {
-    width: 100%;
-  }
-
   
 
 /* PHONES (very small screens under 480px) */
@@ -1258,14 +1273,6 @@ character design lan
 
   
 /* FINAL FIX — FORCE CHARACTER + STORYBOARD IMAGES TO BE RESPONSIVE */
-
-.char-preview,
-.char-gallery img,
- {
-  width: 100% !important;
-  height: auto !important;
-  max-width: 100% !important;
-}
 
 /* Make the character container take full width */
 .character-main,
@@ -1283,20 +1290,7 @@ character design lan
     margin: 0 auto !important;
   }
 }
-/* MOBILE FIX — don't change desktop */
-@media (max-width: 768px) {
-  .character-gallery img,
-  {
-    width: 100% !important;   /* Full width on phone */
-    max-width: 100% !important;
-    display: block;
-  }
 
-  .character-gallery,
-  {
-    flex-direction: column;   /* Stack vertically */
-  }
-}
 
 /* ==============================
    STORYBOARD CLEAN RESPONSIVE GRID
@@ -1310,16 +1304,18 @@ character design lan
   padding: 10px 2%;
   box-sizing: border-box;
 }
-
-.storyboard-gallery img {
+.storyboard-gallery img,
+.storyboard img {
   width: 100%;
-  height: auto;
+  height: auto;        /* ensures proper scaling */
+  object-fit: contain; /* prevents cropping */
   display: block;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .storyboard-gallery img:hover {
   transform: scale(1.03);
