@@ -345,6 +345,12 @@ body {
   }
 }
 
+.board img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+}
 
 .board-title {
   margin-top: 10px;
@@ -1208,6 +1214,39 @@ character design lan
     max-width: 90%;
   }
 }
+
+/* ==============================
+   CHARACTER DESIGN + STORYBOARD MOBILE FIX
+============================== */
+@media (max-width: 768px) {
+  /* Character preview image */
+  .char-preview {
+    width: 100%;
+    max-width: 90%; /* scales down on phones */
+  }
+
+  /* Character gallery images */
+  .char-gallery img {
+    width: 100%;
+  }
+
+ 
+
+/* ==============================
+   CHARACTER DESIGN + STORYBOARD RESPONSIVE FIX
+============================== */
+
+/* TABLETS (bigger screens under 768px) */
+@media (max-width: 768px) {
+  .char-preview {
+    width: 100%;
+    max-width: 500px; /* NOT too small */
+  }
+
+  .char-gallery img {
+    width: 100%;
+  }
+
   
 
 /* PHONES (very small screens under 480px) */
@@ -1219,6 +1258,14 @@ character design lan
 
   
 /* FINAL FIX — FORCE CHARACTER + STORYBOARD IMAGES TO BE RESPONSIVE */
+
+.char-preview,
+.char-gallery img,
+ {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+}
 
 /* Make the character container take full width */
 .character-main,
@@ -1236,7 +1283,20 @@ character design lan
     margin: 0 auto !important;
   }
 }
+/* MOBILE FIX — don't change desktop */
+@media (max-width: 768px) {
+  .character-gallery img,
+  {
+    width: 100% !important;   /* Full width on phone */
+    max-width: 100% !important;
+    display: block;
+  }
 
+  .character-gallery,
+  {
+    flex-direction: column;   /* Stack vertically */
+  }
+}
 
 /* ==============================
    STORYBOARD CLEAN RESPONSIVE GRID
@@ -1250,18 +1310,16 @@ character design lan
   padding: 10px 2%;
   box-sizing: border-box;
 }
-.storyboard-gallery img,
-.storyboard img {
+
+.storyboard-gallery img {
   width: 100%;
-  height: auto;        /* ensures proper scaling */
-  object-fit: contain; /* prevents cropping */
+  height: auto;
   display: block;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 
 .storyboard-gallery img:hover {
   transform: scale(1.03);
