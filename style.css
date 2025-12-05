@@ -10,6 +10,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
+.service-card {
+  display: block;
+  margin: 0 auto;           /* Center horizontally */
+  max-width: 50vw;         /* Prevents overflow horizontally */
+  max-height: 100vh;        /* Prevents overflow vertically */
+  width: auto;
+  height: auto;
+  object-fit: contain;      /* Keeps proportions */
+}
+
 .storyboard-gallery {
   display: flex;
   flex-direction: column;
