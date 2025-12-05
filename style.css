@@ -781,20 +781,17 @@ footer {
 
 /* Masonry layout for illustrations */
 .illustrations-masonry {
-  column-count: 3;              /* Number of columns */
-  column-gap: 1rem;             /* Space between columns */
-  width: 90%;
-  margin: 0 auto;
+  column-count: 3;
+  column-gap: 1.5rem;
 }
 
 .illustrations-masonry img {
   width: 100%;
-  height: auto;
-  margin-bottom: 1rem;
-  border-radius: 8px;
+  margin-bottom: 1.5rem;
   break-inside: avoid;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  border-radius: 18px;
 }
+
 
 .illustrations-masonry img:hover {
   transform: scale(1.03);
@@ -1323,4 +1320,11 @@ character design lan
     gap: 12px;
     padding: 5px 2%;
   }
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden !important;
 }
